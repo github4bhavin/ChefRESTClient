@@ -12,23 +12,23 @@ use Chef::REST::Client;
 
 	my $obj = new Chef::REST::Client
    	       ( 'chef\_client\_name' => $chef\_client\_name )
-  	$obj->name( $chef\_client\_name );
-   $obj->roles('vagrant')->details;
-   $obj->roles('vagrant','environments')->details
-   $obj->roles->list;
+	$obj->name( $chef\_client\_name );
+  	$obj->roles('vagrant')->details;
+  	$obj->roles('vagrant','environments')->details
+  	$obj->roles->list;
    
 
-    $obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
+  	$obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
     
 
-    $obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
+  	$obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
 
-    $obj->environments(<env_name>,'cookbooks_versions'
+  	$obj->environments(<env_name>,'cookbooks_versions'
                                  ,{ 'method' => 'post'
                                  , 'data' => { 'runlist' => [ 'ms-scribe'] }
                                    }
                       );
-    $obj->roles(<role_name>)->details->override_attributes;
+ 	$obj->roles(<role_name>)->details->override_attributes;
                     
 
 # DESCRIPTION
