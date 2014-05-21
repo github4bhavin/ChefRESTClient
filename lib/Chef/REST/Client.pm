@@ -4,7 +4,7 @@
 #--------------------------------------------------------------------#
 
 package Chef::REST::Client;
-$Chef::REST::Client::VERSION = 1.0;
+$Chef::REST::Client::VERSION = 1.1;
 
 =pod
 
@@ -20,23 +20,23 @@ Chef::REST::Client
 
 use Chef::REST::Client;
 
-my $obj = new Chef::REST::Client
-          ( 'chef_client_name' => $chef_client_name )
-   $obj->name( $chef_client_name );
-   $obj->roles('vagrant')->details;
-   $obj->roles('vagrant','environments')->details
-   $obj->roles->list;
+	my $obj = new Chef::REST::Client
+				( 'chef_client_name' => $chef_client_name )
+	$obj->name( $chef_client_name );
+	$obj->roles('vagrant')->details;
+	$obj->roles('vagrant','environments')->details
+	$obj->roles->list;
    
-   $obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
+	$obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
    
-   $obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
+	$obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
 
-   $obj->environments(<env_name>,'cookbooks_versions'
+	$obj->environments(<env_name>,'cookbooks_versions'
                                 ,{ 'method' => 'post'
                                 , 'data' => { 'runlist' => [ 'ms-scribe'] }
                                   }
                      );
-   $obj->roles(<role_name>)->details->override_attributes;
+	$obj->roles(<role_name>)->details->override_attributes;
                    
 =head1 DESCRIPTION
 
@@ -62,15 +62,15 @@ this inturn will return L<Chef::REST::Client::role>
 
 =item /roles
 
-$obj->roles->list 
+	$obj->roles->list 
 
 =item /roles/<role_name>
 
-$obj->roles(<role_name>)->details
+	$obj->roles(<role_name>)->details
 
-$obj->roles(<role_name>)->details->run_list;
+	$obj->roles(<role_name>)->details->run_list;
 
-$obj->roles(<role_name>)->details->override_attributes;
+	$obj->roles(<role_name>)->details->override_attributes;
 
 =back
 
@@ -87,11 +87,11 @@ returns new L<Chef::REST::Client::sandboxes> object. $obj->sandboxes->list;
 
 =item /sandboxes
 
-$obj->sandboxes->list 
+	$obj->sandboxes->list 
 
 =item /sandboxes/<id>
 
-$obj->sandboxes(<id>)->details
+	$obj->sandboxes(<id>)->details
 
 =back
 
@@ -103,15 +103,15 @@ returns new L<Chef::REST::Client::search>
 
 =item /search
 
-$obj->search->listen
+	$obj->search->listen
 
 =item /search/<index>
 
-$obj->search(<index>)->details
+	$obj->search(<index>)->details
 
 =item /search/ query id:centrify and get rows 1
 
-$obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
+	$obj->search( 'secrets' , {  q => 'id:centrify', rows => 1 } )->details
 
 =back  
 
@@ -127,11 +127,11 @@ returns new L<Chef::REST::Client::principals> object. $obj->principals->details;
 
 =item /principals
 
-$obj->principals->list 
+	$obj->principals->list 
 
 =item /principals/<name>
 
-$obj->principals(<name>)->details
+	$obj->principals(<name>)->details
 
 =back
 
@@ -148,11 +148,11 @@ returns new L<Chef::REST::Client::nodes> object. $obj->nodes->list;
 
 =item /nodes
 
-$obj->nodes->listen
+	$obj->nodes->listen
 
 =item /nodes/<node_name>
 
-$obj->nodes(<node_name>)->details 
+	$obj->nodes(<node_name>)->details 
 
 =back
 
@@ -172,23 +172,23 @@ returns new L<Chef::REST::Client::environments> object.
 
 =item  /environment/<env_name>
 
-$obj->environments(<env_name>)->details;
+	$obj->environments(<env_name>)->details;
 
 =item /environment/<env_name>/cookbooks/<cookbook_name>
 
-$obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
+	$obj->environments(<env_name>,'cookbooks' , <cookbook_name>)->details;
 
 =item /environment/<env_name>/cookbooks
 
-$obj->environments(<env_name>,'cookbooks')
+	$obj->environments(<env_name>,'cookbooks')
 
 =item POST /environments/<env_name>/cookbooks_versions
 
-$obj->environments(<env_name>,'cookbooks_versions'
-                             ,{ 'method' => 'post'
-                              , 'data' => { 'runlist' => [ 'ms-scribe'] }
-                              }
-                   );
+	$obj->environments(<env_name>,'cookbooks_versions'
+         	                    ,{ 'method' => 'post'
+   	                           , 'data' => { 'runlist' => [ 'ms-scribe'] }
+      	                        }
+            	       );
 
 =back
 
@@ -204,11 +204,11 @@ returns new L<Chef::REST::Client::data> object.
 
 =item /data
 
-$obj->data->list
+	$obj->data->list
 
 =item /data/<var_name>
 
-$obj->data( <var_name> )->details
+	$obj->data( <var_name> )->details
 
 =back
 
@@ -224,15 +224,15 @@ returns new L<Chef::REST::Client::cookbooks> object.
 
 =item /cookbooks
 
-$obj->cookbooks->list 
+	$obj->cookbooks->list 
 
 =item /cookbooks/<cookbook_name>
 
-$obj->cookbooks(<cookbook_name>)->details 
+	$obj->cookbooks(<cookbook_name>)->details 
 
-$obj->cookbooks(<cookbook_name> , '_latest' )->details->recipes;
+	$obj->cookbooks(<cookbook_name> , '_latest' )->details->recipes;
 
-$obj->cookbooks(<cookbook_name> , '_latest' )->details->attributes;
+	$obj->cookbooks(<cookbook_name> , '_latest' )->details->attributes;
 
 =back
 
@@ -254,11 +254,11 @@ returns new L<Chef::REST::Client::clients> object.
 
 =item /clients
 
-$obj->clients->list 
+	$obj->clients->list 
 
 =item /clients/<client_name>/
 
-$obj->clients(<client_name>)->details
+	$obj->clients(<client_name>)->details
 
 
 =back
