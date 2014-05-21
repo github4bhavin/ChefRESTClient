@@ -10,9 +10,9 @@ Chef::REST::Client
 
 use Chef::REST::Client;
 
-my $obj = new Chef::REST::Client
-          ( 'chef\_client\_name' => $chef\_client\_name )
-   $obj->name( $chef\_client\_name );
+	my $obj = new Chef::REST::Client
+   	       ( 'chef\_client\_name' => $chef\_client\_name )
+  	$obj->name( $chef\_client\_name );
    $obj->roles('vagrant')->details;
    $obj->roles('vagrant','environments')->details
    $obj->roles->list;
@@ -51,17 +51,17 @@ you can directly get details for all the roles as $obj->role( 'role1', 'role2' )
 
 this inturn will return [Chef::REST::Client::role](http://search.cpan.org/perldoc?Chef::REST::Client::role) 
 
-- /roles
+	/roles
 
-$obj->roles->list 
+	$obj->roles->list 
 
-- /roles/<role\_name>
+	/roles/<role\_name>
 
-$obj->roles(<role\_name>)->details
+	$obj->roles(<role\_name>)->details
 
-$obj->roles(<role\_name>)->details->run\_list;
+	$obj->roles(<role\_name>)->details->run\_list;
 
-$obj->roles(<role\_name>)->details->override\_attributes;
+	$obj->roles(<role\_name>)->details->override\_attributes;
 
 ## runlist ( @$recipes )
 
