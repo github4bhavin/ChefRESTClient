@@ -13,6 +13,7 @@ WriteMakefile
 				          'File::Basename'        => 0,
 				          'Crypt::OpenSSL::RSA'   => 0,
 				          'File::Spec::Functions' => 0,
+				          'parent'                => 0,
 	                },
    dist         => { 
                        COMPRESS => 'gzip -9f', 
