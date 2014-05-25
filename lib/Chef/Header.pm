@@ -212,6 +212,7 @@ return a comma seperated list of keys and values of the header
                                        if defined $x_ops_timestamp;
                                              
          if (!$self->header->{'X-Ops-Timestamp'}){
+            die "hangs on Windows" if $^O eq "MSWin32"; #waits for input
        		$self->header->{'X-Ops-Timestamp'} = `date -u "+%Y-%m-%dT%H:%M:%SZ"`;         
        	}
        	chomp( $self->header->{'X-Ops-Timestamp'} );
