@@ -420,6 +420,6 @@ open a github ticket or email comments to Bhavin Patel <bpatel10@nyit.edu>
 
 =head1 COPYRIGHT AND LICENSE
 
-This Software is free to use , licensed under : The Artisic License 2.0 (GPL Compatible)
+This Software is free to use , licensed under : The Artistic License 2.0 (GPL Compatible)
 
 =cut
