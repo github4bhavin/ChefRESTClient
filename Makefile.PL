@@ -5,6 +5,12 @@ WriteMakefile
 	NAME         => 'Chef::REST::Client',
 	AUTHOR       => 'Bhavin Patel <bpatel10@nyit.edu>',
 	VERSION_FROM => 'lib/Chef/REST/Client.pm',
+	LICENSE      => 'perl',
+	META_MERGE => {
+	    resources => {
+                repository => 'https://github.com/github4bhavin/ChefRESTClient',
+            },
+        },
 	PREREQ_PM    => {
 				          'Mojo::JSON'            => 0,
 				          'File::Slurp'           => 0,
@@ -22,6 +28,7 @@ WriteMakefile
    ABSTRACT     => 'Interface for Chef Clients REST API',
    BUILD_REQUIRES 
                 => {
+                       'DateTime'   => 0,
                        'English'    => 0,
                        'Test::More' => 0,
                        'utf8'       => 0,
