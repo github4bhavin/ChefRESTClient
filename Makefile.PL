@@ -5,6 +5,7 @@ WriteMakefile
 	NAME         => 'Chef::REST::Client',
 	AUTHOR       => 'Bhavin Patel <bpatel10@nyit.edu>',
 	VERSION_FROM => 'lib/Chef/REST/Client.pm',
+	LICENSE      => 'perl',
 	META_MERGE => {
 	    resources => {
                 repository => 'https://github.com/github4bhavin/ChefRESTClient',
