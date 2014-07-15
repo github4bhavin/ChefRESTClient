@@ -1,5 +1,5 @@
 #--------------------------------------------------------------------#
-# @Class  : Chef                                                     #
+# Class : Chef                                                       #
 # @author : Bhavin Patel                                             #
 #--------------------------------------------------------------------#
 
@@ -43,9 +43,10 @@ sub new {
     return $self->{ 'HOSTED_CHEF' };
   }
   
-  sub name {
-    my $self = shift;
-    return $self->{'name'};
+  sub private_key {
+    my ($self,$private_key) = (@_);
+           $self->{ 'CHEF_CLIENT_PRIVATE_KEY' } = $private_key if defined $private_key;
+    return $self->{ 'CHEF_CLIENT_PRIVATE_KEY' };
   }
 }#nwe
 
@@ -101,7 +102,7 @@ open a github ticket or email comments to Bhavin Patel <bpatel10@nyit.edu>
 
 =head1 COPYRIGHT AND LICENSE
 
-This Software is free to use , licensed under : The Artistic License 2.0 (GPL Compatible)
+This Software is free to use , licensed under : The Artisic License 2.0 (GPL Compatible)
 
 =cut
 
