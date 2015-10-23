@@ -117,7 +117,7 @@ return a comma seperated list of keys and values of the header
     $self->_chef_encoder( new Chef::Encoder( 'private_key_file'  => $class->private_key ) );
     
     $self->Method          ($param->{'Method'         });
-    $self->HashedPath      ($param->{'Path'           });
+    $self->HashedPath      ($param->{'Path'           },$class->server);
     $self->XOpsContentHash ($param->{'Content'        });
     #$self->XOpsTimestamp   ($param->{'X-Ops-Timestamp'  });
     $self->XOpsUserId      ($class->name               );
@@ -158,7 +158,8 @@ return a comma seperated list of keys and values of the header
     {
       my ($self, $host) = (@_);
       if( defined ($host) ){
-        $host =~ s/^(http|https):\/\/(.*)/$2/;
+        $host =~ s/^(http|https):\/\/([^\/]+)/$2/;
+        $host =~ s/\/.+//;
         $self->header->{'Host'} = $host;
       }
       return $self->header->{'Host'};  
@@ -182,10 +183,13 @@ return a comma seperated list of keys and values of the header
 
     sub HashedPath
     {  
-      my ($self,$path) = (@_);
+      my ($self,$path,$server) = (@_);
 			
       if (defined ($path) )
       {
+         my (undef,$base_path) = $server =~ /(http|https):\/\/[^\/]+\/(.+)$/;
+         $path = $base_path.'/'.$path if $base_path;
+         $path =~ s/\/\///g;
          my $end_point = ($path =~ m/^\//) ? $path : "/$path";
          my $chef_encoder = $self->_chef_encoder();
          $self->header->{'Hashed Path'} = $chef_encoder->sha1
